@@ -1,16 +1,27 @@
-
 import collections
 from . import Expense
+import matplotlib.pyplot as plt
 
 expenses = Expense.Expenses()
-expenses.read_expenses(data/spending_data.csv)
+#expenses.read_expenses(r"C:\Users\taasijo6\Documents\Neuer Ordner\python-collections-budget/data/spending_data.csv")
+expenses.read_expenses("data/spending_data.csv")
 
-spendingCategories = []
 
-for Expense in expenses:
-    spendingCategories.append(expenses.category)
+spending_categories = []
 
-spendingCounter = collections.Counter(spendingCategories)
+for expense in expenses.list:
+    spending_categories.append(expense.category)
 
-print(spendingCategories)
-print(spendingCounter)
+spending_counter = collections.Counter(spending_categories)
+
+print(spending_categories)
+print(spending_counter)
+
+top5 = spending_counter.most_common(5)
+
+categories, count = zip(*top5)
+
+fig, ax = plt.subplots()
+ax.bar(categories, count)
+ax.set_title('# of Purchases by Category')
+plt.show()
