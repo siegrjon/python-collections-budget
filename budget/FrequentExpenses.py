@@ -3,7 +3,6 @@ from . import Expense
 import matplotlib.pyplot as plt
 
 expenses = Expense.Expenses()
-#expenses.read_expenses(r"C:\Users\taasijo6\Documents\Neuer Ordner\python-collections-budget/data/spending_data.csv")
 expenses.read_expenses("data/spending_data.csv")
 
 
